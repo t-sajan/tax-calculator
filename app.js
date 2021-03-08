@@ -1,6 +1,6 @@
 const monthlySalary = document.querySelector("#salary");
-const submitBtn = document.querySelector("#submit");
 const marriageStatus = document.querySelector("#maritial-status");
+const submitBtn = document.querySelector("#submit");
 
 submitBtn.addEventListener("click", function () {
   if (monthlySalary.value == "" || monthlySalary.value < 0 ) {
@@ -8,22 +8,21 @@ submitBtn.addEventListener("click", function () {
     return false;
   }
   let userMonthlySalary = monthlySalary.value;
-  let userYearlySalary = userMonthlySalary *12;
+  let userYearlySalary = userMonthlySalary * 12;
   let maritialStatus = marriageStatus.value;
   if(maritialStatus == "Unmarried"){
-    let calculatedYearlyTax = calculateIndividualSalary(userMonthlySalary);
+    let calculatedYearlyTax = calculateIndividualSalary(userYearlySalary);
     let calculatedMonthlyTax = (calculatedYearlyTax/12).toFixed(2);
     alert(`Your Annual income is NRS ${userYearlySalary} and Yearly Tax Deduction is NRS ${calculatedYearlyTax}/- which results in monthly TDS of NRS ${calculatedMonthlyTax}/-`);
   } else {
-    let calculatedYearlyTax = calculateCoupleSalary(userMonthlySalary);
+    let calculatedYearlyTax = calculateCoupleSalary(userYearlySalary);
     let calculatedMonthlyTax = (calculatedYearlyTax/12).toFixed(2);
     alert(`Your Annual income is NRS ${userYearlySalary} and Yearly Tax Deduction is NRS ${calculatedYearlyTax}/- which results in monthly TDS of NRS ${calculatedMonthlyTax}/-`);
   }
   
 });
 
-function calculateIndividualSalary(yourMonthlySalary) {
-  yearlySalary = yourMonthlySalary * 12;
+function calculateIndividualSalary(yearlySalary) {
   let yearlyTax = 0;
   console.log(`your yearly salary is ${yearlySalary}`);
   if (yearlySalary <= 400000) {
@@ -45,8 +44,7 @@ function calculateIndividualSalary(yourMonthlySalary) {
   return yearlyTax;
 }
 
-function calculateCoupleSalary(yourMonthlySalary) {
-  yearlySalary = yourMonthlySalary * 12;
+function calculateCoupleSalary(yearlySalary) {
   let yearlyTax = 0;
   console.log(`your yearly salary is ${yearlySalary}`);
   if (yearlySalary <= 450000) {
